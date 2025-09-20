@@ -14,6 +14,14 @@ const form_styles = StyleSheet.create({
         borderColor: "#E0E0E0",
         borderRadius: 10
     },
+    error_message: {
+        textAlign: "center",
+        color: "#E0583D",
+        paddingVertical: 10,
+        borderWidth: 2,
+        borderColor: "#E0583D",
+        borderRadius: 10
+    },
     submit: {
         color: "E0E0E0",
         backgroundColor: "#4575BF",
