@@ -1,9 +1,20 @@
 import AccountIconSVG from "@/assets/icons/account_circle_24dp_171717_FILL0_wght400_GRAD0_opsz24.svg";
 import message_style from "@/assets/styles/messages/styles";
+import useAuth from "@/hooks/useAuth";
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 
 //Most recent messages from all contacts, what is seen when user logs in
 const RenderMessages = () => {
+    const { user } = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if(!user){
+            router.replace("/");
+        }
+    }, []);
     //
     //fetch data from async storage
     //
