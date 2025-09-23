@@ -1,4 +1,3 @@
-import { SignOutUser } from "@/components/auth/AuthUI";
 import RenderMessages from "@/components/messages/RenderMessages";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,7 +15,6 @@ export default function Message() {
         keyboardVerticalOffset={ 60 }
         >
           <RenderMessages/>
-          <SignOutUser/>
         </KeyboardAvoidingView>
     </SafeAreaView>
   );

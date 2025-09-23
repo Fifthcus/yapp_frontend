@@ -1,14 +1,14 @@
-import AccountIconSVG from "./account_circle_24dp_171717_FILL0_wght400_GRAD0_opsz24.svg";
+import PFPIcon from "./account_circle_24dp_171717_FILL0_wght400_GRAD0_opsz24.svg";
 
-type AccountIconSVG = {
+type PFPIconSVGProps = {
     width: number,
     height: number
 }
 
-const PFP = ({width, height}: AccountIconSVG) => {
+const PFPIconSVG = ({width, height}: PFPIconSVGProps) => {
     return(
-        <AccountIconSVG width={width} height={height}/>
+        <PFPIcon width={width} height={height}/>
     );
 }
 
-export default PFP;
+export default PFPIconSVG;

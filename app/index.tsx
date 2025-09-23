@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     if(user){
-      router.replace("/protected");
+      router.replace("/(dashboard)/Chats");
     };
   }, []);
 
