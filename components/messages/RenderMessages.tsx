@@ -1,9 +1,11 @@
-import AccountIconSVG from "@/assets/icons/account_circle_24dp_171717_FILL0_wght400_GRAD0_opsz24.svg";
+import PFP from "@/assets/icons/pfp/PFP";
 import message_style from "@/assets/styles/messages/styles";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
+import Swipeable from "react-native-gesture-handler/ReanimatedSwipeable";
+import { SwipeRightOnMessageAction } from "../utilities/SwipeRightOnMessage";
 
 //Most recent messages from all contacts, what is seen when user logs in
 const RenderMessages = () => {
@@ -49,19 +51,21 @@ const RenderMessages = () => {
     return(
         <FlatList data={messagesToRender} renderItem={
             ({ item }) => 
-                <View style={message_style.messageList}>
-                    <View>
-                        <AccountIconSVG/>
+                <Swipeable renderRightActions={SwipeRightOnMessageAction}>
+                    <View style={message_style.messageList}>
+                        <View style={message_style.messageListIcon}>
+                            <PFP width={48} height={48}/>
+                        </View>
+                        <View style={message_style.messageListText}>
+                            <Text style={{ fontSize: 15 }}>
+                                { item.contactName }
+                            </Text>
+                            <Text style={{ color: "#878686", fontSize: 12 }}>
+                                { item.mostRecentMessage }
+                            </Text>
+                        </View>
                     </View>
-                    <View>
-                        <Text>
-                            { item.contactName }
-                        </Text>
-                        <Text>
-                            { item.mostRecentMessage }
-                        </Text>
-                    </View>
-                </View>
+                </Swipeable>
             }
         />
     );
