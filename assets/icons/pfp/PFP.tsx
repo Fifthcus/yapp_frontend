@@ -1,4 +1,4 @@
-import PFPIcon from "./account_circle_24dp_171717_FILL0_wght400_GRAD0_opsz24.svg";
+import PFPIcon from "./account_circle_24dp_171717_FILL0_wght200_GRAD0_opsz24.svg";
 
 type PFPIconSVGProps = {
     width: number,

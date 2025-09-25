@@ -35,7 +35,7 @@ export function SignUp() {
                 updateProfile(auth.currentUser, {
                     displayName: username
                 });
-                router.replace("/protected");
+                router.replace("./(tabs)/chats");
             } else {
                 setErrorMessage("An error occured trying to create your account.");
             }
@@ -78,7 +78,7 @@ export function SignIn() {
     const signInUser = async () => {
         try{
             await signInWithEmailAndPassword(auth, email, password);
-            router.replace("/protected");
+            router.replace("./(tabs)/chats");
         } catch(error) {
             if (error instanceof FirebaseError) {
                 setErrorMessage(error.message);
