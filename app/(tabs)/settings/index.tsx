@@ -1,5 +1,4 @@
-import PersonIconSVG from "@/assets/icons/person/Person";
-import PFPIconSVG from "@/assets/icons/pfp/PFP";
+import IconComponent from "@/assets/icons/IconComponent";
 import { SignOutUser } from "@/components/auth/AuthUI";
 import { SettingsContainer, SettingsContainerItem } from "@/components/settings/Cotainers";
 import useAuth from "@/hooks/useAuth";
@@ -19,7 +18,7 @@ export default function Settings() {
         gap: 10
       }}>
         <View style={{ margin: "auto" }}>
-          <PFPIconSVG width={48} height={48}/>
+          <IconComponent iconName="account_circle" width={48} height={48}/>
         </View>
         <View style={{ 
           display: "flex",
@@ -38,7 +37,7 @@ export default function Settings() {
         {/*Account Settings*/}
         <SettingsContainerItem>
           <View style={{ justifyContent: "center" }}>
-            <PersonIconSVG width={36} height={36}/>
+            <IconComponent iconName="person" width={36} height={36}/>
           </View>
           <Pressable style={{
             justifyContent: "center"

@@ -7,6 +7,12 @@ export default function RootLayout() {
           <Stack.Screen name="account" options={{ 
             headerShown: true,
             title: "Account",
+            headerStyle: {
+              backgroundColor: "#F2F2F2",
+            },
+            headerBackTitleStyle: {
+              fontSize: 16
+            },
             headerBackTitle: "Go Back"
           }} />
         </Stack>

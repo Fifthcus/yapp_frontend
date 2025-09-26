@@ -1,4 +1,4 @@
-import PFP from "@/assets/icons/pfp/PFP";
+import IconComponent from "@/assets/icons/IconComponent";
 import message_style from "@/assets/styles/messages/styles";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "expo-router";
@@ -54,7 +54,7 @@ const RenderMessages = () => {
                 <Swipeable renderRightActions={SwipeRightOnMessageAction}>
                     <View style={message_style.messageList}>
                         <View style={message_style.messageListIcon}>
-                            <PFP width={48} height={48}/>
+                            <IconComponent iconName="account_circle" width={48} height={48}/>
                         </View>
                         <View style={message_style.messageListText}>
                             <Text style={{ fontSize: 15 }}>

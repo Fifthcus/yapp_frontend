@@ -1,5 +1,4 @@
-import ChatsIconSVG from "@/assets/icons/chats/Chat";
-import SettingsIconSVG from "@/assets/icons/settings/Settings";
+import IconComponent from "@/assets/icons/IconComponent";
 import { Tabs } from "expo-router";
 
 export default function TabsLayout() {
@@ -15,7 +14,7 @@ export default function TabsLayout() {
         title: "Chats",
         tabBarIcon: () => {
           return(
-            <ChatsIconSVG width={24} height={24}/>
+            <IconComponent iconName="chat" width={24} height={24}/>
           );
         }
       }} />
@@ -23,7 +22,7 @@ export default function TabsLayout() {
         title: "Settings", 
         tabBarIcon: () => {
           return(
-            <SettingsIconSVG width={24} height={24}/>
+            <IconComponent iconName="settings" width={24} height={24}/>
           )
         }
       }} />
