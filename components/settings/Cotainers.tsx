@@ -4,7 +4,7 @@ import { View } from "react-native";
 export function SettingsContainer({ children }: { children: ReactNode }) {
     return (
         <View style={{
-            paddingHorizontal: 25
+            paddingHorizontal: 1
         }}>
             { children }
         </View>

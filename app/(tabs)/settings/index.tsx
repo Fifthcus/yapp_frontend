@@ -1,10 +1,18 @@
 import IconComponent from "@/assets/icons/IconComponent";
 import { SignOutUser } from "@/components/auth/AuthUI";
 import { SettingsContainer, SettingsContainerItem } from "@/components/settings/Cotainers";
+import Spacer from "@/components/utilities/Spacer";
 import useAuth from "@/hooks/useAuth";
-import { useRouter } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Link, useRouter } from "expo-router";
+import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+const settings = [
+  {
+      iconName: "person",
+      text: "Account Settings"
+  },
+];
 
 export default function Settings() {
   const { user } = useAuth();
@@ -32,19 +40,34 @@ export default function Settings() {
         </View>
       </View>
 
-      {/*Profile Settings*/}
+      {/*Settings Page*/}
       <SettingsContainer>
-        {/*Account Settings*/}
-        <SettingsContainerItem>
-          <View style={{ justifyContent: "center" }}>
-            <IconComponent iconName="person" width={36} height={36}/>
-          </View>
-          <Pressable style={{
-            justifyContent: "center"
-          }} onPress={() => router.navigate("../settings/account")}>
-              <Text style={{ fontSize: 15 }}>Account Settings</Text>
-          </Pressable>
-        </SettingsContainerItem>
+        <FlatList data={settings} renderItem={
+            ({ item }) =>
+              <> 
+                  <Link href="../settings/account">
+                    <View style={{
+                      borderBottomWidth: 1,
+                      borderColor: "#E0E0E0",
+                      width: "100%",
+                      paddingLeft: 15
+                    }}>
+                      <Spacer/>
+                      <SettingsContainerItem>
+                        <View style={{ justifyContent: "center" }}>
+                            <IconComponent iconName={ item.iconName } width={36} height={36}/>
+                        </View>
+                        <View style={{
+                              justifyContent: "center"
+                          }}>
+                          <Text style={{ fontSize: 15 }}>{ item.text }</Text>
+                        </View>
+                      </SettingsContainerItem>
+                      <Spacer/>
+                    </View>
+                  </Link>
+              </>
+        }/>
       </SettingsContainer>
 
       <SignOutUser/>

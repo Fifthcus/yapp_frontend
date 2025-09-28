@@ -8,6 +8,7 @@ const message_style = StyleSheet.create({
         paddingVertical: 15,
         borderBottomWidth: 1,
         borderColor: "#E0E0E0",
+        width: "100%",
         paddingHorizontal: 15
     },
     messageListIcon: {

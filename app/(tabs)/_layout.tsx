@@ -10,7 +10,7 @@ export default function TabsLayout() {
       tabBarActiveTintColor: "#171717",
       headerShown: false
     }}>
-      <Tabs.Screen name="chats/index" options={{ 
+      <Tabs.Screen name="chats" options={{ 
         title: "Chats",
         tabBarIcon: () => {
           return(
