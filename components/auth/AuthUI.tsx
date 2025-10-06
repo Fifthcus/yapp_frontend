@@ -1,22 +1,11 @@
 import form_styles from "@/assets/styles/forms/styles";
 import { auth } from "@/FirebaseConfig";
-import { useRouter } from "expo-router";
+import { Route, useRouter } from "expo-router";
 import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { Button, Pressable, Text, TextInput, View } from "react-native";
-
-type DisplayErrorProps = {
-    errorMessage: string;
-}
-
-function DisplayError({ errorMessage }: DisplayErrorProps) {
-    return(
-        <Text style={ form_styles.error_message }>
-            { errorMessage }
-        </Text>
-    );
-}
+import DisplayError from "../utilities/DisplayError";
 
 export function SignUp() {
     const [email, setEmail] = useState("");
@@ -67,7 +56,7 @@ export function SignUp() {
     );
 }
 
-export function SignIn() {
+export function SignIn({ route="./(tabs)/chats" }: { route: string}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -78,7 +67,7 @@ export function SignIn() {
     const signInUser = async () => {
         try{
             await signInWithEmailAndPassword(auth, email, password);
-            router.replace("./(tabs)/chats");
+            router.replace(route as Route);
         } catch(error) {
             if (error instanceof FirebaseError) {
                 setErrorMessage(error.message);

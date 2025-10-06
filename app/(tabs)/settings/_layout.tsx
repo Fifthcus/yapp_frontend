@@ -6,7 +6,7 @@ export default function RootLayout() {
           <Stack.Screen name="index" />
           <Stack.Screen name="account" options={{ 
             headerShown: true,
-            title: "Account",
+            title: "Account Settings",
             headerStyle: {
               backgroundColor: "#F2F2F2",
             },
