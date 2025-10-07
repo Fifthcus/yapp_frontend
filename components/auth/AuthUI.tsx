@@ -1,13 +1,15 @@
 import form_styles from "@/assets/styles/forms/styles";
-import { auth } from "@/FirebaseConfig";
+import { auth } from "@/FirebaseConfig"; //initialize firebase
 import { Route, useRouter } from "expo-router";
 import { FirebaseError } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { useState } from "react";
-import { Button, Pressable, Text, TextInput, View } from "react-native";
+import { Button, TextInput, View } from "react-native";
 import DisplayError from "../utilities/DisplayError";
+import YappButton from "../utilities/YappButton";
+import PasswordInput from "./PasswordInput";
 
-export function SignUp() {
+export const SignUp = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -17,8 +19,7 @@ export function SignUp() {
 
     const createUserAccount = async () => {
         try {
-            const credentials = await createUserWithEmailAndPassword(auth, email, password);
-            const user = credentials.user;
+            await createUserWithEmailAndPassword(auth, email, password);
             //update username
             if (auth.currentUser) {
                 updateProfile(auth.currentUser, {
@@ -38,30 +39,36 @@ export function SignUp() {
     }
     return (
         <View style={ form_styles.form }>
-            <TextInput onChangeText={ setEmail } value={ email } style={ form_styles.input } placeholder="Enter your email"/>
-            <TextInput onChangeText={ setUsername } value={ username } style={ form_styles.input } placeholder="Create a username"/>
-            <TextInput onChangeText={ setPassword } value={ password } style={ form_styles.input } placeholder="Enter your password"/>
+            <TextInput 
+                onChangeText={ (input) => {
+                    setEmail(input);
+                    setErrorMessage("");
+                }} 
+                value={ email } 
+                style={ form_styles.input } 
+                placeholder="Enter your email"
+            />
+            <TextInput 
+                onChangeText={ (input) => {
+                    setUsername(input);
+                    setErrorMessage("");
+                }} 
+                value={ username } 
+                style={ form_styles.input } 
+                placeholder="Create a username"/>
+            <PasswordInput password={ password } setPassword={ setPassword } setErrorMessage={ setErrorMessage } placeholder="Create a password"/>
             {/* Error Message */}
-            { errorMessage?
-                <DisplayError errorMessage={errorMessage}/>
-                :
-                null
-            }
-            <Pressable style={ form_styles.submit } onPress={createUserAccount}>
-                <Text style={ form_styles.submit_text }>
-                    Create Account
-                </Text>
-            </Pressable>
+            <DisplayError errorMessage={ errorMessage }/>
+            <YappButton title="Create Account" action={ createUserAccount }/>
         </View>
     );
 }
 
-export function SignIn({ route="./(tabs)/chats" }: { route: string}) {
+export const SignIn = ({ route="./(tabs)/chats" }: { route: string}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const auth = getAuth();
     const router = useRouter();
 
     const signInUser = async () => {
@@ -79,24 +86,15 @@ export function SignIn({ route="./(tabs)/chats" }: { route: string}) {
     return (
       <View style={ form_styles.form }>
         <TextInput onChangeText={ setEmail } value={ email } style={ form_styles.input } placeholder="Enter your email"/>
-        <TextInput onChangeText={ setPassword } value={ password } style={ form_styles.input } placeholder="Enter your password"/>
+        <PasswordInput password={ password } setPassword={ setPassword } setErrorMessage={ setErrorMessage } placeholder="Enter your password"/>
         {/* Error Message */}
-        { errorMessage?
-            <DisplayError errorMessage={errorMessage}/>
-            :
-            null
-        }
-        <Pressable style={ form_styles.submit } onPress={signInUser}>
-            <Text style={ form_styles.submit_text }>
-                Sign In
-            </Text>
-        </Pressable>
+        <DisplayError errorMessage={ errorMessage }/>
+        <YappButton title="Sign In" action={ signInUser }/>
       </View>
     );
 }
 
-export function SignOutUser(){
-    const auth = getAuth();
+export const SignOutUser = () => {
     const router = useRouter();
 
     const handlePress = async () => {
@@ -104,6 +102,6 @@ export function SignOutUser(){
         router.replace("/");
     }
     return(
-        <Button title="Sign Out" onPress={handlePress}/>
+        <Button title="Sign Out" onPress={ handlePress }/>
     );
 }

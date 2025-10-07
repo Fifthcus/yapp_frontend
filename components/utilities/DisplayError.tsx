@@ -7,9 +7,16 @@ type DisplayErrorProps = {
 
 const DisplayError = ({ errorMessage }: DisplayErrorProps) =>{
     return(
-        <Text style={ form_styles.error_message }>
-            { errorMessage }
-        </Text>
+        <>
+            {
+                errorMessage ? 
+                    <Text style={ form_styles.error_message }>
+                        { errorMessage }
+                    </Text>
+                :
+                null
+            }
+        </>
     );
 }
 

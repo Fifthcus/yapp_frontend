@@ -25,7 +25,7 @@ const form_styles = StyleSheet.create({
     submit: {
         color: "E0E0E0",
         backgroundColor: "#4575BF",
-        paddingVertical: 15,
+        paddingVertical: 18,
         borderRadius: 10
     },
     submit_text: {
