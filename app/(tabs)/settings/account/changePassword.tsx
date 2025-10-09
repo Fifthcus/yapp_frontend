@@ -1,9 +1,11 @@
 import form_styles from "@/assets/styles/forms/styles";
 import settings_styles from "@/assets/styles/settings/styles";
 import { SettingsContainerPage } from "@/components/settings/Containers";
+import DisplayError from "@/components/utilities/DisplayError";
 import YappButton from "@/components/utilities/YappButton";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "expo-router";
+import { FirebaseError } from "firebase/app";
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
 import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
@@ -11,6 +13,8 @@ import { Text, TextInput, View } from "react-native";
 export default function changePassword() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const router = useRouter();
 
   const { user } = useAuth();
@@ -21,7 +25,11 @@ export default function changePassword() {
         await reauthenticateWithCredential(user, credential).then(async () => {
           return await updatePassword(user, newPassword);
         }).catch((error) => {
-          console.log(error);
+          if(error instanceof FirebaseError){
+            setErrorMessage(error.message);
+          } else {
+            console.log(error);
+          }
         });
         await updatePassword(user, newPassword);
         router.replace("../../settings");
@@ -39,6 +47,7 @@ export default function changePassword() {
         <TextInput onChangeText={ setCurrentPassword } value={ currentPassword } style={ form_styles.input } placeholder="Enter your current password"/>
         <TextInput onChangeText={ setNewPassword } value={ newPassword } style={ form_styles.input } placeholder="Enter your new password"/>
         <YappButton title="Submit" action={ updateUsersPassword }/>
+        <DisplayError errorMessage={ errorMessage } />
       </View>
     </SettingsContainerPage>
   );
