@@ -1,12 +1,13 @@
+import { Colors } from "@/assets/styles/colors/styles";
 import form_styles from "@/assets/styles/forms/styles";
 import { auth } from "@/FirebaseConfig"; //initialize firebase
 import { Route, useRouter } from "expo-router";
 import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { useState } from "react";
-import { Button, TextInput, View } from "react-native";
+import { TextInput, View } from "react-native";
+import YappButton from "../utilities/Buttons";
 import DisplayError from "../utilities/DisplayError";
-import YappButton from "../utilities/YappButton";
 import PasswordInput from "./PasswordInput";
 
 export const SignUp = () => {
@@ -59,12 +60,12 @@ export const SignUp = () => {
             <PasswordInput password={ password } setPassword={ setPassword } setErrorMessage={ setErrorMessage } placeholder="Create a password"/>
             {/* Error Message */}
             <DisplayError errorMessage={ errorMessage }/>
-            <YappButton title="Create Account" action={ createUserAccount }/>
+            <YappButton title="Create Account" bgColor={ Colors.primary }action={ createUserAccount }/>
         </View>
     );
 }
 
-export const SignIn = ({ route="./(tabs)/chats" }: { route: string}) => {
+export const SignIn = ({ route="./(tabs)/chats" }: { route?: string}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -89,7 +90,7 @@ export const SignIn = ({ route="./(tabs)/chats" }: { route: string}) => {
         <PasswordInput password={ password } setPassword={ setPassword } setErrorMessage={ setErrorMessage } placeholder="Enter your password"/>
         {/* Error Message */}
         <DisplayError errorMessage={ errorMessage }/>
-        <YappButton title="Sign In" action={ signInUser }/>
+        <YappButton title="Sign In" bgColor={ Colors.primary } action={ signInUser }/>
       </View>
     );
 }
@@ -97,11 +98,15 @@ export const SignIn = ({ route="./(tabs)/chats" }: { route: string}) => {
 export const SignOutUser = () => {
     const router = useRouter();
 
-    const handlePress = async () => {
+    const signUserOut = async () => {
         await signOut(auth);
         router.replace("/");
     }
     return(
-        <Button title="Sign Out" onPress={ handlePress }/>
+        <View style={{
+            paddingHorizontal: 50 
+        }}>
+            <YappButton title="Sign Out" bgColor={ Colors.secondary } action={ signUserOut }/>
+        </View>
     );
 }

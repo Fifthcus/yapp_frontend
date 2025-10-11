@@ -1,8 +1,9 @@
+import { Colors } from "@/assets/styles/colors/styles";
 import form_styles from "@/assets/styles/forms/styles";
 import settings_styles from "@/assets/styles/settings/styles";
 import { SettingsContainerPage } from "@/components/settings/Containers";
+import YappButton from "@/components/utilities/Buttons";
 import DisplayError from "@/components/utilities/DisplayError";
-import YappButton from "@/components/utilities/YappButton";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "expo-router";
 import { FirebaseError } from "firebase/app";
@@ -47,7 +48,7 @@ export default function changeEmail() {
         <TextInput onChangeText={ setCurrentPassword } value={ currentPassword } style={ form_styles.input } placeholder="Enter your current password"/>
         <TextInput onChangeText={ setEmail } value={ email } style={ form_styles.input } placeholder="Enter your new email"/>
         <DisplayError errorMessage={ errorMessage }/>
-        <YappButton title="Submit" action={ updateUsersEmail }/>
+        <YappButton title="Submit" bgColor={ Colors.primary } action={ updateUsersEmail }/>
       </View>
     </SettingsContainerPage>
   );

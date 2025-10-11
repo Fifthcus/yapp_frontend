@@ -1,8 +1,9 @@
+import { Colors } from "@/assets/styles/colors/styles";
 import form_styles from "@/assets/styles/forms/styles";
 import settings_styles from "@/assets/styles/settings/styles";
+import YappButton from "@/components/utilities/Buttons";
 import DisplayError from "@/components/utilities/DisplayError";
 import Spacer from "@/components/utilities/Spacer";
-import YappButton from "@/components/utilities/YappButton";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "expo-router";
 import { FirebaseError } from "firebase/app";
@@ -65,7 +66,7 @@ export default function deleteUserAccount() {
         </View>
         <Spacer/>
         <DisplayError errorMessage={ errorMessage } />
-        <YappButton title="Tap to Submit Request" action={ deleteUsersAccount }/>
+        <YappButton title="Tap to Submit Request" bgColor={ Colors.danger } action={ deleteUsersAccount }/>
       </View>
     </View>
   );
