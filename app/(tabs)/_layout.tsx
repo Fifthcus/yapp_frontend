@@ -1,4 +1,4 @@
-import IconComponent from "@/assets/icons/IconComponent";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router";
 
 export default function TabsLayout() {
@@ -11,10 +11,10 @@ export default function TabsLayout() {
       headerShown: false
     }}>
       <Tabs.Screen name="chats" options={{ 
-        title: "Chats",
+        title: "Conversations",
         tabBarIcon: () => {
           return(
-            <IconComponent iconName="chat" width={24} height={24}/>
+            <Ionicons name="chatbubbles-outline" size={ 24 }/>
           );
         }
       }} />
@@ -22,7 +22,7 @@ export default function TabsLayout() {
         title: "Settings", 
         tabBarIcon: () => {
           return(
-            <IconComponent iconName="settings" width={24} height={24}/>
+            <Ionicons name="cog-outline" size={ 24 }/>
           )
         }
       }} />

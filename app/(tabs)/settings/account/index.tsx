@@ -1,29 +1,29 @@
-import IconComponent from "@/assets/icons/IconComponent";
 import settings_styles from "@/assets/styles/settings/styles";
 import { SettingsContainer, SettingsContainerItem } from "@/components/settings/Containers";
 import Spacer from "@/components/utilities/Spacer";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Link } from "expo-router";
 import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const accountSettingsList = [
     {
-        iconName: "person",
+        iconName: "person-outline",
         text: "Change Username",
         link: "./account/changeUsername"
     },
     {
-        iconName: "email",
+        iconName: "mail-outline",
         text: "Change Email",
         link: "./account/changeEmail"
     },
     {
-        iconName: "key",
+        iconName: "keypad-outline",
         text: "Change Password",
         link: "./account/changePassword"
     },
     {
-        iconName: "delete",
+        iconName: "trash-outline",
         text: "Delete Your Account",
         link: "./account/deleteUser"
     }
@@ -41,7 +41,7 @@ export default function Account(){
                                 <View style={ settings_styles.settingsList }>
                                         <SettingsContainerItem>
                                             <View style={{ justifyContent: "center" }}>
-                                                <IconComponent iconName={ item.iconName } width={ 36 } height={ 36 }/>
+                                                <Ionicons name={ item.iconName } size={ 24 }/>
                                             </View>
                                             <View style={{ justifyContent: "center" }}>
                                                 <Text style={{ fontSize: 15 }}>{ item.text }</Text>

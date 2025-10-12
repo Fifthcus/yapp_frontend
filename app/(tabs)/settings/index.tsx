@@ -1,9 +1,9 @@
-import IconComponent from "@/assets/icons/IconComponent";
 import settings_styles from "@/assets/styles/settings/styles";
 import { SignOutUser } from "@/components/auth/AuthUI";
 import { SettingsContainer, SettingsContainerItem } from "@/components/settings/Containers";
 import Spacer from "@/components/utilities/Spacer";
 import useAuth from "@/hooks/useAuth";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Link } from "expo-router";
 import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -27,7 +27,7 @@ export default function Settings() {
         gap: 10
       }}>
         <View style={{ margin: "auto" }}>
-          <IconComponent iconName="account_circle" width={48} height={48}/>
+          <Ionicons name="person-circle-outline" size={ 48 }/>
         </View>
         <View style={{ 
           display: "flex",
@@ -43,7 +43,7 @@ export default function Settings() {
 
       {/*Settings Page*/}
       <SettingsContainer>
-        <FlatList data={settings} renderItem={
+        <FlatList data={ settings } renderItem={
             ({ item }) =>
               <> 
                 <Link href={ item.link }>
@@ -51,7 +51,7 @@ export default function Settings() {
                     <Spacer/>
                     <SettingsContainerItem>
                       <View style={{ justifyContent: "center" }}>
-                          <IconComponent iconName={ item.iconName } width={36} height={36}/>
+                          <Ionicons name="person-outline" size={ 24 }/>
                       </View>
                       <View style={{ justifyContent: "center" }}>
                         <Text style={{ fontSize: 15 }}>{ item.text }</Text>

@@ -1,6 +1,6 @@
-import IconComponent from "@/assets/icons/IconComponent";
 import message_style from "@/assets/styles/messages/styles";
 import useAuth from "@/hooks/useAuth";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Link, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
@@ -65,7 +65,7 @@ const RenderMessages = () => {
                     >
                         <View style={message_style.messageList}>
                             <View style={message_style.messageListIcon}>
-                                <IconComponent iconName="account_circle" width={48} height={48}/>
+                                <Ionicons name="person-circle-outline" size={ 48 }/>
                             </View>
                             <View style={message_style.messageListText}>
                                 <Text style={{ fontSize: 15 }}>
