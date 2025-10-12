@@ -42,9 +42,39 @@ export default function RootLayout() {
             },
             headerBackTitle: "Go Back"
           }}/>
-          <Stack.Screen name="changeEmail" />
-          <Stack.Screen name="changePassword" />
-          <Stack.Screen name="deleteUser" />
+          <Stack.Screen name="changeEmail" options={{
+            headerShown: true,
+            title: "Change Email",
+            headerStyle: {
+              backgroundColor: "#F2F2F2",
+            },
+            headerBackTitleStyle: {
+              fontSize: 16
+            },
+            headerBackTitle: "Go Back"
+          }}/>
+          <Stack.Screen name="changePassword" options={{
+            headerShown: true,
+            title: "Change Password",
+            headerStyle: {
+              backgroundColor: "#F2F2F2",
+            },
+            headerBackTitleStyle: {
+              fontSize: 16
+            },
+            headerBackTitle: "Go Back"
+          }}/>
+          <Stack.Screen name="deleteUser" options={{
+            headerShown: true,
+            title: "Delete Account",
+            headerStyle: {
+              backgroundColor: "#F2F2F2",
+            },
+            headerBackTitleStyle: {
+              fontSize: 16
+            },
+            headerBackTitle: "Go Back"
+          }}/>
         </Stack>
   );
 }

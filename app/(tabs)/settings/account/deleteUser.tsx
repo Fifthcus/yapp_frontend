@@ -1,6 +1,7 @@
 import { Colors } from "@/assets/styles/colors/styles";
 import form_styles from "@/assets/styles/forms/styles";
 import settings_styles from "@/assets/styles/settings/styles";
+import { SettingsContainerPage } from "@/components/settings/Containers";
 import YappButton from "@/components/utilities/Buttons";
 import DisplayError from "@/components/utilities/DisplayError";
 import Spacer from "@/components/utilities/Spacer";
@@ -46,7 +47,7 @@ export default function deleteUserAccount() {
     }
   }
   return(
-    <View style={ settings_styles.settingsHeader }>
+    <SettingsContainerPage>
       <View style={ form_styles.form }>
         <Text style={ settings_styles.settingsHeader }>
           Delete Your Account?
@@ -68,6 +69,6 @@ export default function deleteUserAccount() {
         <DisplayError errorMessage={ errorMessage } />
         <YappButton title="Tap to Submit Request" bgColor={ Colors.danger } action={ deleteUsersAccount }/>
       </View>
-    </View>
+    </SettingsContainerPage>
   );
 }
