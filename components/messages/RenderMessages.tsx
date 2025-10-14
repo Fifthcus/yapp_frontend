@@ -54,20 +54,20 @@ const RenderMessages = () => {
     ]
 
     return(
-        <FlatList data={messagesToRender} renderItem={
+        <FlatList data={ messagesToRender } renderItem={
             ({ item }) => 
-                <Swipeable renderRightActions={SwipeRightOnMessageAction}>
+                <Swipeable renderRightActions={ SwipeRightOnMessageAction }>
                     <Link 
                         href={{
                             pathname: "../chats/recipient/[id]",
                             params: { id: `${item.id}` }
                         }}
                     >
-                        <View style={message_style.messageList}>
-                            <View style={message_style.messageListIcon}>
+                        <View style={ message_style.messageList }>
+                            <View style={ message_style.messageListIcon }>
                                 <Ionicons name="person-circle-outline" size={ 48 }/>
                             </View>
-                            <View style={message_style.messageListText}>
+                            <View style={ message_style.messageListText }>
                                 <Text style={{ fontSize: 15 }}>
                                     { item.contactName }
                                 </Text>
