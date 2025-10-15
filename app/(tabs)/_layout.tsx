@@ -5,6 +5,9 @@ export default function TabsLayout() {
   return(
     <Tabs screenOptions={{
       tabBarActiveTintColor: "#171717",
+      tabBarStyle: {
+        backgroundColor: "#F2F2F2"
+      },
       headerShown: false
     }}>
       <Tabs.Screen name="chats" options={{
