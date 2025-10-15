@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Stack } from "expo-router";
-import { View } from "react-native-reanimated/lib/typescript/Animated";
+import { View } from "react-native";
 
 export default function RootLayout() {
   return(
@@ -19,7 +19,8 @@ export default function RootLayout() {
               <View>
                 <Ionicons name="person-circle-outline" size={ 48 }/>
               </View>
-          }} />
+            }} 
+          />
         </Stack>
   );
 }

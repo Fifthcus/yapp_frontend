@@ -3,12 +3,14 @@ import { Pressable, StyleSheet, Text } from "react-native";
 interface YappButton {
     title: string,
     bgColor: string,
+    borderColor?: string,
+    borderWidth?: number,
     action?: any
 }
 
-const YapButton = ({ title, bgColor, action }: YappButton) => {
+const YapButton = ({ title, bgColor, borderColor, borderWidth, action }: YappButton) => {
     return(
-        <Pressable style={ [styles.button, { backgroundColor: bgColor }] } >
+        <Pressable style={ [styles.button, { backgroundColor: bgColor, borderColor: borderColor, borderWidth: borderWidth }] } >
             <Text 
                 style={ [styles.buttonText] }
                 onPress={ () => action() }

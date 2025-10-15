@@ -6,6 +6,8 @@ export const Colors = {
   primary: YappPrimary,
   secondary: YappSecondary,
   danger: YappDanger,
+
+  borderColor: "#E0E0E0",
   
   dark: {
     text: "#d4d4d4",

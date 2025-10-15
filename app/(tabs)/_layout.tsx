@@ -4,20 +4,17 @@ import { Tabs } from "expo-router";
 export default function TabsLayout() {
   return(
     <Tabs screenOptions={{
-      tabBarStyle: {
-        backgroundColor: "#F2F2F2",
-      },
       tabBarActiveTintColor: "#171717",
       headerShown: false
     }}>
-      <Tabs.Screen name="chats" options={{ 
-        title: "Conversations",
+      <Tabs.Screen name="chats" options={{
+        title: "Conversations", 
         tabBarIcon: () => {
           return(
             <Ionicons name="chatbubbles-outline" size={ 24 }/>
-          );
+          )
         }
-      }} />
+      }}/>
       <Tabs.Screen name="settings" options={{ 
         title: "Settings", 
         tabBarIcon: () => {

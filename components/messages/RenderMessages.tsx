@@ -60,7 +60,7 @@ const RenderMessages = () => {
                     <Link 
                         href={{
                             pathname: "../chats/recipient/[id]",
-                            params: { id: `${item.id}` }
+                            params: { id: `${ item.id }` }
                         }}
                     >
                         <View style={ message_style.messageList }>
